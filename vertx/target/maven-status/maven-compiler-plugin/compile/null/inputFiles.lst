@@ -1,0 +1,10 @@
+/home/ap29/Downloads/java-benchmark/src/main/java/org/acme/domain/PessoaInvalidError.java
+/home/ap29/Downloads/java-benchmark/src/main/java/org/acme/endpoint/PessoaResource.java
+/home/ap29/Downloads/java-benchmark/src/main/java/org/acme/endpoint/JsonExceptionHandler.java
+/home/ap29/Downloads/java-benchmark/src/main/java/org/acme/domain/port/GetPessoaById.java
+/home/ap29/Downloads/java-benchmark/src/main/java/org/acme/domain/Pessoa.java
+/home/ap29/Downloads/java-benchmark/src/main/java/org/acme/adapter/PgQueriesAdapter.java
+/home/ap29/Downloads/java-benchmark/src/main/java/org/acme/domain/PessoaNotFoundError.java
+/home/ap29/Downloads/java-benchmark/src/main/java/org/acme/domain/port/CreatePessoa.java
+/home/ap29/Downloads/java-benchmark/src/main/java/org/acme/config/RunFlyway.java
+/home/ap29/Downloads/java-benchmark/src/main/java/org/acme/domain/port/ListPessoasByText.java

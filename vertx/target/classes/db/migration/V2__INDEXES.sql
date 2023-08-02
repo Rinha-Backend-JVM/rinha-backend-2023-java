@@ -1,0 +1,1 @@
+create index on pessoa using gist(to_tsvector('simple', apelido || ' ' || nome || ' ' || stack));
