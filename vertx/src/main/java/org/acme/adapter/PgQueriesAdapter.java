@@ -54,7 +54,7 @@ public class PgQueriesAdapter implements ListPessoasByText, GetPessoaById, Creat
     @Override
     public Multi<Pessoa> byText(String searchText) {
         return pgClient.preparedQuery("select * from public.pessoa where " +
-                        "to_tsvector(apelido || ' ' || nome || ' ' || stack) @@ plainto_tsquery($1)")
+                        "to_tsvector('simple', apelido || ' ' || nome || ' ' || stack) @@ plainto_tsquery($1)")
                 .execute(Tuple.of(searchText))
                 .onItem().transformToMulti(rs -> Multi.createFrom().iterable(rs))
                 .onItem().transform(this::fromRow);
