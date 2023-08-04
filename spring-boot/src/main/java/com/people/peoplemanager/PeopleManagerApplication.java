@@ -10,4 +10,4 @@ public class PeopleManagerApplication {
 		SpringApplication.run(PeopleManagerApplication.class, args);
 	}
 
-}
+	}
