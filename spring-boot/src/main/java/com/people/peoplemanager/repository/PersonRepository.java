@@ -10,5 +10,4 @@ import java.util.UUID;
 public interface PersonRepository extends JpaRepository<Person, UUID> {
 
     boolean existsByApelido(String apelido);
-
 }
