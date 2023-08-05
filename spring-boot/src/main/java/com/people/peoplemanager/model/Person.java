@@ -18,17 +18,17 @@ public class Person {
     private String nome;
     @Column(nullable = false, length = 10)
     private String nascimento;
-    private String[] stacks;
+    private String[] stack;
 
     public Person() {
     }
 
-    public Person(UUID id, String apelido, String nome, String nascimento, String[] stacks) {
+    public Person(UUID id, String apelido, String nome, String nascimento, String[] stack) {
         this.id = id;
         this.apelido = apelido;
         this.nome = nome;
         this.nascimento = nascimento;
-        this.stacks = stacks;
+        this.stack = stack;
     }
 
     public UUID getId() {
@@ -64,11 +64,11 @@ public class Person {
     }
 
     public String[] getStacks() {
-        return stacks;
+        return stack;
     }
 
     public void setStacks(String[] stacks) {
-        this.stacks = stacks;
+        this.stack = stacks;
     }
 }
 

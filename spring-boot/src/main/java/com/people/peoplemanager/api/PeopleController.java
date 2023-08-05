@@ -26,6 +26,7 @@ public class PeopleController {
             throw new InvalidObjectException("Os campos \"apelido\", \"nome\" e \"nascimento\" não podem ser vazios ou nulos");
         }else if(text.length() > tam){
             throw new InvalidObjectException("O campo " + namefield + " deve ter no maximo " + tam + " caracteres.");
+
         } else if(repository.existsByApelido(text) && namefield.equals("Apelido")) {
             throw new InvalidObjectException(namefield + " ja existente na base de dados, por favor tente outro.");
         }else if(text.matches("/\\d\\d\\d\\d\\-\\d\\d\\-\\d\\d/gm") && namefield.equals("Nascimento")){
@@ -37,16 +38,16 @@ public class PeopleController {
         System.out.println(person.apelido());
         System.out.println(person.nascimento());
         System.out.println(person.nome());
-        System.out.println(person.stacks());
+        System.out.println(person.stack());
 
         verificacaoString(person.nome(), 100, "Nome");
         verificacaoString(person.apelido(), 32, "Apelido");
         verificacaoString(person.nascimento(), 10, "Nascimento");
-        for(String s : person.stacks()){
+        for(String s : person.stack()){
             verificacaoString(s, 32, "stacks");
         }
 
-        Person pessoa = new Person(null, person.apelido(), person.nome(), person.nascimento(), person.stacks());
+        Person pessoa = new Person(null, person.apelido(), person.nome(), person.nascimento(), person.stack());
         pessoa = repository.save(pessoa);
 
         return (ResponseEntity) ResponseEntity.status(HttpStatus.CREATED).header(String.valueOf(pessoa.getId()));
