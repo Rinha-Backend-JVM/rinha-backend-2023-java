@@ -1,7 +1,7 @@
 package com.people.peoplemanager.exceptions;
 
-public class ObjectNotFoundException extends RuntimeException{
-    public ObjectNotFoundException(String message) {
+public class PersonNotFoundException extends RuntimeException{
+    public PersonNotFoundException(String message) {
         super(message);
     }
 }
