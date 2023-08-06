@@ -2,24 +2,23 @@ package com.people.peoplemanager.api;
 
 import com.people.peoplemanager.dto.PersonDto;
 import com.people.peoplemanager.exceptions.InvalidObjectException;
-import com.people.peoplemanager.exceptions.ObjectNotFoundException;
+import com.people.peoplemanager.exceptions.PersonNotFoundException;
 import com.people.peoplemanager.model.Person;
-import com.people.peoplemanager.repository.PersonRepository;
+import com.people.peoplemanager.repository.PeopleRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/pessoas")
 public class PeopleController {
 
-    private final PersonRepository repository;
+    private final PeopleRepository repository;
 
-    public PeopleController(PersonRepository repository) {
+    public PeopleController(PeopleRepository repository) {
         this.repository = repository;
     }
 
@@ -30,7 +29,7 @@ public class PeopleController {
             throw new InvalidObjectException("O campo " + namefield + " deve ter no maximo " + tam + " caracteres.");
         } else if(repository.existsByApelido(text) && namefield.equals("Apelido")) {
             throw new InvalidObjectException(namefield + " ja existente na base de dados, por favor tente outro.");
-        }else if(namefield.equals("Nascimento") && text.contains("/\\d\\d\\d\\d\\-\\d\\d\\-\\d\\d/gm")){
+        }else if(namefield.equals("Nascimento") && text.contains("/\\d\\d\\d\\d\\-\\d\\d\\-\\d\\d/gm")){    //FIXME: VALIDAÇÃO DA DATA NÃO ESTA FUNCIONANDO
             throw new InvalidObjectException("Formato de data invalido, por favor utilize o formato: 'AAAA-MM-DD'");
         }
     }
@@ -58,7 +57,7 @@ public class PeopleController {
         if(repository.existsById(id)){
             return ResponseEntity.ok(repository.findById(id));
         }
-        throw new ObjectNotFoundException("Pessoa não encontrada através do ID informado");
+        throw new PersonNotFoundException("Pessoa não encontrada através do ID informado");
     }
 
 }
