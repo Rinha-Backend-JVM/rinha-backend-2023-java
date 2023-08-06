@@ -9,8 +9,8 @@ services:
     ports:
       - '5432:5432'
 
-  springboot:
-    image: springboot
+  people-service:
+    image: people-service
     build:
       context: .
       dockerfile: ./Dockerfile
