@@ -2,7 +2,6 @@ package com.people.peoplemanager.model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -18,7 +17,7 @@ public class Person {
     private String nome;
     @Column(nullable = false, length = 10)
     private String nascimento;
-    private String[] stack;
+    private String[] stack; //FIXME: CAMPO NÃO ESTÁ SENDO PERSISTIDO
 
     public Person() {
     }
@@ -63,12 +62,12 @@ public class Person {
         this.nascimento = nascimento;
     }
 
-    public String[] getStacks() {
+    public String[] getStack() {
         return stack;
     }
 
-    public void setStacks(String[] stacks) {
-        this.stack = stacks;
+    public void setStack(String[] stack) {
+        this.stack = stack;
     }
 }
 
