@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/pessoas")
 public class PeopleController {
+    private String abc;
     @PostMapping
     public ResponseEntity add() {
         return new ResponseEntity<>(HttpStatus.CREATED);
