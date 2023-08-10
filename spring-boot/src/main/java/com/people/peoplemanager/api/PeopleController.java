@@ -24,13 +24,13 @@ public class PeopleController {
 
     private void verificacaoString(String text, int tam, String namefield){
         if(text == null || text.isEmpty() || text.split("").equals("") && namefield.length() != 6){
-            throw new InvalidObjectException("Os campos ''apelido'', 'nome'' e ''nascimento'' não podem ser vazios ou nulos");
+            throw new InvalidObjectException();
         }else if(text.length() > tam){
-            throw new InvalidObjectException("O campo " + namefield + " deve ter no maximo " + tam + " caracteres.");
+            throw new InvalidObjectException();
         } else if(repository.existsByApelido(text) && namefield.equals("Apelido")) {
-            throw new InvalidObjectException(namefield + " ja existente na base de dados, por favor tente outro.");
+            throw new InvalidObjectException();
         }else if(namefield.equals("Nascimento") && text.contains("/\\d\\d\\d\\d\\-\\d\\d\\-\\d\\d/gm")){    //FIXME: VALIDAÇÃO DA DATA NÃO ESTA FUNCIONANDO
-            throw new InvalidObjectException("Formato de data invalido, por favor utilize o formato: 'AAAA-MM-DD'");
+            throw new InvalidObjectException();
         }
     }
     @PostMapping
@@ -57,7 +57,7 @@ public class PeopleController {
         if(repository.existsById(id)){
             return ResponseEntity.ok(repository.findById(id));
         }
-        throw new PersonNotFoundException("Pessoa não encontrada através do ID informado");
+        throw new PersonNotFoundException();
     }
 
 }

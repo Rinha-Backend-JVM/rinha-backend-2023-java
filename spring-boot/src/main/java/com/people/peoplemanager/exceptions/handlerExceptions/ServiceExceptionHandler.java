@@ -1,7 +1,7 @@
 package com.people.peoplemanager.exceptions.handlerExceptions;
 
 import com.people.peoplemanager.exceptions.InvalidObjectException;
-import com.people.peoplemanager.exceptions.ObjectNotFoundException;
+import com.people.peoplemanager.exceptions.PersonNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,8 +25,8 @@ public class ServiceExceptionHandler {
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(error);
     }
 
-    @ExceptionHandler(ObjectNotFoundException.class)
-    public ResponseEntity<StandardError> ObjectNotFoundException(ObjectNotFoundException e, HttpServletRequest request){
+    @ExceptionHandler(PersonNotFoundException.class)
+    public ResponseEntity<StandardError> ObjectNotFoundException(PersonNotFoundException e, HttpServletRequest request){
         StandardError error = new StandardError(
                 Instant.now(),
                 HttpStatus.NOT_FOUND.value(),
